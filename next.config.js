@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+import NextCors from 'nextjs-cors';
 
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -20,11 +21,37 @@ module.exports = {
   }
 };
 
+
+// async function handler(req, res) {
+//    // Run the cors middleware
+//    // nextjs-cors uses the cors package, so we invite you to check the documentation https://github.com/expressjs/cors
+//    await NextCors(req, res, {
+//       // Options
+//       methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+//       origin: '*',
+//       optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+//    });
+
+//    // Rest of the API logic
+//    res.json({ message: 'Hello NextJs Cors!' });
+// }
+
+
 const nextConfig = {
   images: {
     domains: ['api.dicebear.com', 'xsgames.co'],
   },
   reactStrictMode: true,
+  // swcMinify: true,
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: "/api/:path*",
+  //       destination: "https://job-portal-main-a9zzl1f07-byoungducklee.vercel.app/api/:path*",
+  //     },
+  //   ];
+  // },
+
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
